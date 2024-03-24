@@ -26,7 +26,7 @@ JsonDocument dataJSON;
 #define BLE_SCAN_TIME_SEC 5 // BLE scan time in seconds
 
 // List of known sensors' BLE addresses
-std::vector<std::string> knownBLEAddresses = {"a4:c1:38:17:35:30", "a4:c1:38:47:00:1c", "a4:c1:38:52:31:1c"};
+std::vector<std::string> knownBLEAddresses = {"a4:c1:38:17:35:30", "a4:c1:38:47:00:1c", "a4:c1:38:52:31:ff"};
 
 ATC_MiThermometer miThermometer(knownBLEAddresses);
 AsyncWebServer server(80);
