@@ -3,11 +3,13 @@
 ## Description
 ESP32 based project. It collects themperatures and humidity data over Bluetooth (BLE) from [xiaomi mijia thermometers](Xiaomi-Mijia-Bluetooth-Thermometer-Hygrometer-2-Temperature-Humidity-Sensor-Smart-Digital-LCD-Moisture-Meter-Thermo-Hygrometer.jpg) and forwards it to [InfluxDB cloud](https://www.influxdata.com/products/influxdb-cloud) service free tier. [Grafana cloud service](https://grafana.com) is used for charts.
 
-ESP32runs a webserver on port 80 for a local API and OTA firmware updates.
+Thermometer were flashed with the [new firmware](https://github.com/atc1441/ATC_MiThermometer) so that they emit temp/humidity/etc in the BLE advertisement.
 
-There is a custom partition file [partitions_custom.csv](partitions_custom.csv) to reduce spiffs size, otherwise code does not fit.
+ESP32 runs a webserver on port 80 for a local API and OTA firmware updates. See details below.
 
-The OTA functionality is modified [ElegantOTA](https://github.com/ayushsharma82/ElegantOTA). If you want to make changes to UI - edit [index.html](lib/ElegantOTA/src/index.html) to you liking. This script (populate_progmem.py)[populate_progmem.py] runs on every build to copy/encode the index.html into PROGMEM
+There is a custom partition file [partitions_custom.csv](partitions_custom.csv) to reduce spiffs size, otherwise the firmware does not fit into 4MB flash.
+
+The OTA functionality is a modified [ElegantOTA](https://github.com/ayushsharma82/ElegantOTA). If you want to make changes to UI - edit [index.html](lib/ElegantOTA/src/index.html) to you liking. This script [populate_progmem.py](populate_progmem.py) runs on every build to copy/encode the index.html into PROGMEM. It also captures build time and last git revision id, see on the screenshot below.
 
 ## How it works
 <img src="how-it-works.jpg" width="600"/>
